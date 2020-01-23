@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/styles.css">
+{% endblock %}
+
+{% block body %}
+    {{ form_start(registrationForm) }}
+
+    <div class="container">
+        <!---heading---->
+        <hr>
+        <header class="heading"> Registration-Form</header><hr>
+        <!---Form starting---->
+        <div class="row" style="margin-left: 350px;">
+            <!--- For Name---->
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                        {{ form_row(registrationForm.loginName, {'label' : 'Login Name :','label_attr':{'class': 'firstname'},'attr' : {'placeholder' : '','class' : 'form-control', 'id' : 'fname'}}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--- For Email---->
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class ="col-sm-8">
+                        <div class="form-group">
+                        {{ form_row(registrationForm.email, { 'label' : 'Email :','label_attr':{'class': 'lastname'},'attr' : {'placeholder' : '','class' : 'form-control','id': 'email'}}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-----For Password---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                {{ form_row(registrationForm.confirmPassword, {'label' : 'Confirm Password :','label_attr':{'class': 'pass'}, 'attr' : {'placeholder' : 'your Password','class' : 'form-control'}}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-----For button------->
+            <div class="col-sm-12">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                    <a href="{{ path('home') }}" class="btn btn-group-lg">Cancel</a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+    {{ form_end(registrationForm) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="https//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% endblock %}

@@ -20,16 +20,19 @@ class RegistrationController extends AbstractController
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginForAuthenticator $authenticator): Response
     {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('home');
+        }
         $client = new Client();
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $client->setAdresse('NULL')
+            $client->setAdresse('NuLL')
                    ->setCity('NULL')
                    ->setState('NULL')
-                   ->setPostCode(0000)
+                   ->setPostCode(2097)
                    ->setFullname('NULL')
                    ->setBirthdate(new \DateTime('now'))
                    ->setUser($user);

@@ -28,16 +28,15 @@
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-bars"></i>Categories </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Informatique</a>
-                        <a class="dropdown-item" href="#">Multimedia</a>
-                        <a class="dropdown-item" href="#">Immobilier</a>
+                        <a class="dropdown-item" href="{{ path('home') }}">Informatique</a>
+                        <a class="dropdown-item" href="{{ path('home') }}">Multimedia</a>
                     </div>
                 </li>
                 <li class="nav-item active" ><a class="nav-link" href="{{ path('contact') }}"><i class="fa fa-address-book-o"></i>Contact</a></li>
                 <li class="nav-item active" ><a class="nav-link" href="{{ path('cart') }}"><i class="fa fa-shopping-cart"></i>Basket</a></li>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" href="">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" href="">Search</button>
                 </form>
             </ul>
             {% if not is_granted('ROLE_USER') %}
@@ -104,7 +103,7 @@
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
                 <h4>Useful links</h4>
                 <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
-                <p><a href="#" class="text-white">Home</a></p>
+                <p><a href="{{ path('home') }}" class="text-white">Home</a></p>
                 <p><a href="#" class="text-white">About Us</a></p>
                 <p><a href="#" class="text-white">Services</a></p>
                 <p><a href="{{ path('contact') }}" class="text-white">Contact</a></p>

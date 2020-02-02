@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\CcontactType;
 use App\Repository\ArticleRepository;
+use Doctrine\Persistence\ObjectManager;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -14,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 
-/**
+    /**
      * @Route("/home")
      */
 class HomeController extends AbstractController
@@ -22,12 +24,13 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(ArticleRepository $articleRepo)
+    public function index(ArticleRepository $articleRepo, PaginatorInterface $paginator, Request $request)
     {
-        $article = $articleRepo->findAll();
+        $articles = $articleRepo->findAll();
 
+        $pagination = $paginator->paginate($articles,$request->query->getInt('page',1),8);
         return $this->render('home/home.html.twig',[
-            'articles' => $article,
+            'articles' => $pagination,
         ]);
     }
     /**
@@ -63,5 +66,7 @@ class HomeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
 }
 
